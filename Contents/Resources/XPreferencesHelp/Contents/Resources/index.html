@@ -70,11 +70,12 @@ Methods
 <ul>
 <li>Version : 1.0</li>
 <li>Author : Tetsuro KURITA <a href="mailto:scriptfactory@mac.com">scriptfactory@mac.com</a></li>
-<li>Repository : </li>
+<li>Requirements : OS X 10.9 or later</li>
+<li><a href="http://www.script-factory.net/XModules/XPreferences/en/index.html">Home page</a> || <a href="http://www.script-factory.net/XModules/XPreferences/changelog.html">ChangeLog</a> || <a href="https://github.com/tkurita/XPreferences.scptd">Repository</a> </li>
 </ul>
 <p>XPreferences to support saving and loading settings(preferences) of a script.</p>
 <p>XPreferences help to load and save a script object to store settings of your script.</p>
-<p>The file of the settings is save in "~/Library/Preferences" folder as a script file.</p>
+<p>The file of the settings is save in &quot;~/Library/Preferences&quot; folder as a script file.</p>
 <h2 id="HowtoUse">How to Use</h2>
 <ol>
 <li>Define a script object to store settings (prefereces script object).</li>
@@ -82,7 +83,7 @@ Methods
 <li>Load saved setttings as a script object (preferences script object).</li>
 <li>Obtain values from the preferences script object.</li>
 <li>Do your task.</li>
-<li>At the end of your task, update values in the preferences script object.</li>
+<li>Update values in the preferences script object before termination of your script.</li>
 <li>Save the preferences script object by using <a href="pages/save_current_prefs.html">save_current_prefs</a>.</li>
 </ol>
 <h2 id="Example">Example</h2>
@@ -182,11 +183,11 @@ Methods
 </div>
 </div>
 <h2 id="Updatepreferencescriptobject">Update preference script object</h2>
-<p>To allow to update preference script object (e.g. adding new settings), the preference script object has a "version" property and "update" method.</p>
-<p>If the default preferences script object passed to <a href="pages/set_default_prefs.html">set_default_prefs</a> has "version" property and its value is greather than the value of the "version" property of loaded preferences script object, preferences script object will be updated with following steps.</p>
+<p>To allow to update preference script object (e.g. adding new settings), the preference script object has a "version" property and &quot;update&quot; method.</p>
+<p>If the default preferences script object passed to <a href="pages/set_default_prefs.html">set_default_prefs</a> has &quot;version&quot; property and its value is greather than the value of the &quot;version&quot; property of loaded preferences script object, preferences script object will be updated with following steps.</p>
 <ol>
 <li>Copy the default preferences script object.</li>
-<li>The "update" handler of new preferences object will recieve old loaded preferences script object.</li>
+<li>The &quot;update&quot; handler of new preferences object will recieve old loaded preferences script object.</li>
 <li>Copy values form old loaded preferences script object by your self in the update handler.</li>
 </ol>
 <h2 id="Methods">Methods</h2>
