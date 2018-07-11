@@ -3,31 +3,35 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleHelpBookFolder</key>
-	<string>XPreferences Help</string>
+	<string>XPreferencesHelp</string>
 	<key>CFBundleHelpBookName</key>
-	<string>XPreferences Help</string>
+	<string>net.script-factory.XPreferences.help</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.apple.ScriptEditor.id.XPreferences</string>
+	<string>net.script-factory.XPreferences</string>
 	<key>CFBundleName</key>
 	<string>XPreferences</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright 2018, Tetsuro KURITA</string>
 	<key>WindowState</key>
 	<dict>
 		<key>bundleDividerCollapsed</key>
-		<true/>
+		<false/>
 		<key>bundlePositionOfDivider</key>
-		<real>0.0</real>
+		<real>602</real>
 		<key>dividerCollapsed</key>
-		<true/>
+		<false/>
 		<key>eventLogLevel</key>
 		<integer>2</integer>
 		<key>name</key>
 		<string>ScriptWindowState</string>
 		<key>positionOfDivider</key>
-		<real>333</real>
+		<real>479</real>
 		<key>savedFrame</key>
-		<string>773 173 602 604 0 0 1440 877 </string>
+		<string>292 150 901 706 0 0 1440 877 </string>
 		<key>selectedTab</key>
 		<string>result</string>
 	</dict>

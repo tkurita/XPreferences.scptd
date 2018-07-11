@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>XPreferences Reference</title>
+		<meta name="AppleTitle" content="XPreferences Reference" />
+
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<link href="assets/default.css" type="text/css" rel="stylesheet" media="all" />
+        <link href="assets/applescript.css" type="text/css" rel="stylesheet" media="all" />
+		<meta name="keywords" content="XPreferences, AppleScript" />
+		<script type="text/javascript" src="assets-helpbook/run_helpscript.js"></script>
+		<script type="text/javascript" src="assets/navibar-jump.js"></script>
+        <link id="helpviewer-handler-helper" href="assets-helpbook/helpviewer-handler-helper.scpt" />
+        <script type="text/javascript" src="assets-helpbook/helpviewer-handler-enable.js"></script>
+        <link href="./" id="HelpBookRoot" />
+	</head>
+
+	<body>
+		<div id="navi-bar">
+			<div class="edit-script-link">
+				<a onclick="return runHelpScriptWithBundleRoot(this)" href="assets-helpbook/editScript.scpt">Edit Script</a>
+			</div>
+			<div class="left-contents">
+			<div class="to-root">
+				<!-- InstanceBeginEditable name="to-root" --><!-- InstanceEndEditable -->
+			</div>
+			<select onchange="navibarJump(this)">
+<option value="">
+§
+</option>
+<option value="#HowtoUse">
+How to Use
+</option>
+<option value="#Example">
+Example
+</option>
+<option value="#Updatepreferencescriptobject">
+Update preference script object
+</option>
+<option value="#Methods">
+Methods
+</option>
+<option value="#set_default_prefs">
+- set_default_prefs
+</option>
+<option value="#set_pref_name">
+- set_pref_name
+</option>
+<option value="#load">
+- load
+</option>
+<option value="#save_current_prefs">
+- save_current_prefs
+</option>
+<option value="#save_as_pefs">
+- save_as_pefs
+</option>
+<option value="#prefs">
+- prefs
+</option>
+</select>
+			</div>
+		</div>
+		<!-- InstanceBeginEditable name="prev-next-item" --><!-- InstanceEndEditable -->
+		<div id="contents">
+		<h1>XPreferences Reference</h1>
+<ul>
+<li>Version : 1.0</li>
+<li>Author : Tetsuro KURITA <a href="mailto:scriptfactory@mac.com">scriptfactory@mac.com</a></li>
+<li>Repository : </li>
+</ul>
+<p>XPreferences to support saving and loading settings(preferences) of a script.</p>
+<p>XPreferences help to load and save a script object to store settings of your script.</p>
+<p>The file of the settings is save in "~/Library/Preferences" folder as a script file.</p>
+<h2 id="HowtoUse">How to Use</h2>
+<ol>
+<li>Define a script object to store settings (prefereces script object).</li>
+<li>Pass the script to XPreferences by using <a href="pages/set_default_prefs.html">set_default_prefs</a>.</li>
+<li>Load saved setttings as a script object (preferences script object).</li>
+<li>Obtain values from the preferences script object.</li>
+<li>Do your task.</li>
+<li>At the end of your task, update values in the preferences script object.</li>
+<li>Save the preferences script object by using <a href="pages/save_current_prefs.html">save_current_prefs</a>.</li>
+</ol>
+<h2 id="Example">Example</h2>
+<div class="sourceCode">
+<div class="scriptButton">
+    <input type="button" value="Open this script" onclick="document.location = this.src" src="applescript://com.apple.scripteditor?action=new&amp;script=use%20scripting%20additions%0Duse%20XPreferences%20:%20script%20%22XPreferences%22%0D%0Dscript%20XPreferencesSampleSettings%0D%09property%20version%20:%20%221.0%22%20--%20optional%0D%09property%20_msg%20:%20%22hello%22%0D%09%0D%09on%20message()%0D%09%09return%20my%20_msg%0D%09end%20message%0D%09%0D%09on%20set_message(v)%0D%09%09set%20my%20_msg%20to%20v%0D%09%09return%20me%0D%09end%20set_message%0D%09%0D%09on%20update(old_settings)%20--%20optional%0D%09%09set%20my%20_msg%20to%20old_settings%27s%20_msg%0D%09end%20update%0Dend%20script%0D%0Don%20_init()%0D%09tell%20XPreferences%0D%09%09set_default_prefs(XPreferencesSampleSettings)%0D%09end%20tell%0Dend%20_init%0D%0Dproperty%20_%20:%20_init()%0D%0Don%20run%0D%09set%20prefs%20to%20XPreferences%27s%20load()%0D%09display%20alert%20(prefs%27s%20message())%0D%09prefs%27s%20set_message(%22Hi%22)%0D%09XPreferences%27s%20save_current_prefs()%0Dend%20run" />
+</div><div>
+<span class="langKeyword">use</span> <span class="className">scripting additions</span>
+</div>
+<div>
+<span class="langKeyword">use</span> <span class="userDefine">XPreferences</span><span class="normal"> : </span><span class="className">script</span><span class="normal"> &quot;XPreferences&quot;</span>
+</div>
+<br />
+<div>
+<span class="langKeyword">script</span> <span class="userDefine">XPreferencesSampleSettings</span>
+</div>
+<div style="text-indent:4ex;">
+<span class="langKeyword">property</span> <span class="className">version</span><span class="normal"> : &quot;1.0&quot; </span><span class="comment">-- optional</span>
+</div>
+<div style="text-indent:4ex;">
+<span class="langKeyword">property</span> <span class="userDefine">_msg</span><span class="normal"> : &quot;hello&quot;</span>
+</div>
+<br />
+<div style="text-indent:4ex;">
+<span class="langKeyword">on</span> <span class="userDefine">message</span><span class="normal">()</span>
+</div>
+<div style="text-indent:8ex;">
+<span class="langKeyword">return</span> <span class="langKeyword">my</span> <span class="userDefine">_msg</span>
+</div>
+<div style="text-indent:4ex;">
+<span class="langKeyword">end</span> <span class="userDefine">message</span>
+</div>
+<br />
+<div style="text-indent:4ex;">
+<span class="langKeyword">on</span> <span class="userDefine">set_message</span><span class="normal">(</span><span class="userDefine">v</span><span class="normal">)</span>
+</div>
+<div style="text-indent:8ex;">
+<span class="langKeyword">set</span> <span class="langKeyword">my</span> <span class="userDefine">_msg</span> <span class="langKeyword">to</span> <span class="userDefine">v</span>
+</div>
+<div style="text-indent:8ex;">
+<span class="langKeyword">return</span> <span class="langKeyword">me</span>
+</div>
+<div style="text-indent:4ex;">
+<span class="langKeyword">end</span> <span class="userDefine">set_message</span>
+</div>
+<br />
+<div style="text-indent:4ex;">
+<span class="langKeyword">on</span> <span class="userDefine">update</span><span class="normal">(</span><span class="userDefine">old_settings</span><span class="normal">) </span><span class="comment">-- optional</span>
+</div>
+<div style="text-indent:8ex;">
+<span class="langKeyword">set</span> <span class="langKeyword">my</span> <span class="userDefine">_msg</span> <span class="langKeyword">to</span> <span class="userDefine">old_settings's</span> <span class="userDefine">_msg</span>
+</div>
+<div style="text-indent:4ex;">
+<span class="langKeyword">end</span> <span class="userDefine">update</span>
+</div>
+<div>
+<span class="langKeyword">end</span> <span class="langKeyword">script</span>
+</div>
+<br />
+<div>
+<span class="langKeyword">on</span> <span class="userDefine">_init</span><span class="normal">()</span>
+</div>
+<div style="text-indent:4ex;">
+<span class="langKeyword">tell</span> <span class="userDefine">XPreferences</span>
+</div>
+<div style="text-indent:8ex;">
+<span class="userDefine">set_default_prefs</span><span class="normal">(</span><span class="userDefine">XPreferencesSampleSettings</span><span class="normal">)</span>
+</div>
+<div style="text-indent:4ex;">
+<span class="langKeyword">end</span> <span class="langKeyword">tell</span>
+</div>
+<div>
+<span class="langKeyword">end</span> <span class="userDefine">_init</span>
+</div>
+<br />
+<div>
+<span class="langKeyword">property</span> <span class="userDefine">_</span><span class="normal"> : </span><span class="userDefine">_init</span><span class="normal">()</span>
+</div>
+<br />
+<div>
+<span class="langKeyword">on</span> <span class="commandName">run</span>
+</div>
+<div style="text-indent:4ex;">
+<span class="langKeyword">set</span> <span class="userDefine">prefs</span> <span class="langKeyword">to</span> <span class="userDefine">XPreferences's</span> <span class="userDefine">load</span><span class="normal">()</span>
+</div>
+<div style="text-indent:4ex;">
+<span class="additionCommandName">display alert</span><span class="normal"> (</span><span class="userDefine">prefs's</span> <span class="userDefine">message</span><span class="normal">())</span>
+</div>
+<div style="text-indent:4ex;">
+<span class="userDefine">prefs's</span> <span class="userDefine">set_message</span><span class="normal">(&quot;Hi&quot;)</span>
+</div>
+<div style="text-indent:4ex;">
+<span class="userDefine">XPreferences's</span> <span class="userDefine">save_current_prefs</span><span class="normal">()</span>
+</div>
+<div>
+<span class="langKeyword">end</span> <span class="commandName">run</span>
+</div>
+</div>
+<h2 id="Updatepreferencescriptobject">Update preference script object</h2>
+<p>To allow to update preference script object (e.g. adding new settings), the preference script object has a "version" property and "update" method.</p>
+<p>If the default preferences script object passed to <a href="pages/set_default_prefs.html">set_default_prefs</a> has "version" property and its value is greather than the value of the "version" property of loaded preferences script object, preferences script object will be updated with following steps.</p>
+<ol>
+<li>Copy the default preferences script object.</li>
+<li>The "update" handler of new preferences object will recieve old loaded preferences script object.</li>
+<li>Copy values form old loaded preferences script object by your self in the update handler.</li>
+</ol>
+<h2 id="Methods">Methods</h2>
+
+<h3 id="set_default_prefs"><a href="pages/set_default_prefs.html">set_default_prefs</a></h3>
+<p>Set a default preferences as a script object.</p>
+<h3 id="set_pref_name"><a href="pages/set_pref_name.html">set_pref_name</a></h3>
+<p>Set a file name of a preference file.</p>
+<h3 id="load"><a href="pages/load.html">load</a></h3>
+<p>Load saved prefereces script object.</p>
+<h3 id="save_current_prefs"><a href="pages/save_current_prefs.html">save_current_prefs</a></h3>
+<p>Save the preferences script object stored in XPreferences into a file.</p>
+<h3 id="save_as_pefs"><a href="pages/save_as_pefs.html">save_as_pefs</a></h3>
+<p>Save a script object as a preferences script object into a file.</p>
+<h3 id="prefs"><a href="pages/prefs.html">prefs</a></h3>
+<p>Obtain current preferences script object stored in XPreferences.</p>
+		</div>
+		<!-- InstanceBeginEditable name="prev-next-item" --><!-- InstanceEndEditable -->
+	</body>
+
+</html>
