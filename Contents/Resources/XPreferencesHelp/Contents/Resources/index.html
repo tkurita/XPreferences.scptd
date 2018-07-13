@@ -37,8 +37,8 @@ How to Use
 <option value="#Example">
 Example
 </option>
-<option value="#Updatepreferencescriptobject">
-Update preference script object
+<option value="#Updatepreferencesscriptobject">
+Update preferences script object
 </option>
 <option value="#Methods">
 Methods
@@ -73,9 +73,11 @@ Methods
 <li>Requirements : OS X 10.9 or later</li>
 <li><a href="http://www.script-factory.net/XModules/XPreferences/en/index.html">Home page</a> || <a href="http://www.script-factory.net/XModules/XPreferences/changelog.html">ChangeLog</a> || <a href="https://github.com/tkurita/XPreferences.scptd">Repository</a> </li>
 </ul>
-<p>XPreferences to support saving and loading settings(preferences) of a script.</p>
-<p>XPreferences help to load and save a script object to store settings of your script.</p>
-<p>The file of the settings is save in &quot;~/Library/Preferences&quot; folder as a script file.</p>
+<p>XPreferences is a AppleScript Library to help saving and loading settings(preferences) of an AppleScript application.</p>
+<p>Because AppleScript applications (droplets, applets and script files) can keep values in properties after the termination of the execution, properties can be used to store settings. But values of properties will be initialized when the script is recompiled to fix bugs or to implement new functions.</p>
+<p>Therefore, even in the case of AppleScript, it is useful to save settings in an external file.</p>
+<p>XPreferences help to load and save a user defined script object to store settings (preferences script object) into "~/Library/Preferences" folder.</p>
+<p>Also XPreferences support to update the preferences script object. When your AppleScript application is updated and the specification of the preferences script object is changed, XPreferences help to move values from old preferences script object to new one. (see <a href="#Updatepreferencescriptobject">Update preferences script object</a> )</p>
 <h2 id="HowtoUse">How to Use</h2>
 <ol>
 <li>Define a script object to store settings (prefereces script object).</li>
@@ -89,7 +91,7 @@ Methods
 <h2 id="Example">Example</h2>
 <div class="sourceCode">
 <div class="scriptButton">
-    <input type="button" value="Open this script" onclick="document.location = this.src" src="applescript://com.apple.scripteditor?action=new&amp;script=use%20scripting%20additions%0Duse%20XPreferences%20:%20script%20%22XPreferences%22%0D%0Dscript%20XPreferencesSampleSettings%0D%09property%20version%20:%20%221.0%22%20--%20optional%0D%09property%20_msg%20:%20%22hello%22%0D%09%0D%09on%20message()%0D%09%09return%20my%20_msg%0D%09end%20message%0D%09%0D%09on%20set_message(v)%0D%09%09set%20my%20_msg%20to%20v%0D%09%09return%20me%0D%09end%20set_message%0D%09%0D%09on%20update(old_settings)%20--%20optional%0D%09%09set%20my%20_msg%20to%20old_settings%27s%20_msg%0D%09end%20update%0Dend%20script%0D%0Don%20_init()%0D%09tell%20XPreferences%0D%09%09set_default_prefs(XPreferencesSampleSettings)%0D%09end%20tell%0Dend%20_init%0D%0Dproperty%20_%20:%20_init()%0D%0Don%20run%0D%09set%20prefs%20to%20XPreferences%27s%20load()%0D%09display%20alert%20(prefs%27s%20message())%0D%09prefs%27s%20set_message(%22Hi%22)%0D%09XPreferences%27s%20save_current_prefs()%0Dend%20run" />
+    <input type="button" value="Open this script" onclick="document.location = this.src" src="applescript://com.apple.scripteditor?action=new&amp;script=use%20scripting%20additions%0Duse%20XPreferences%20:%20script%20%22XPreferences%22%0D%0Dscript%20XPreferencesSampleSettings%0D%09property%20version%20:%20%221.0%22%20--%20optional%0D%09property%20_msg%20:%20%22hello%22%0D%09%0D%09on%20message()%0D%09%09return%20my%20_msg%0D%09end%20message%0D%09%0D%09on%20set_message(v)%0D%09%09set%20my%20_msg%20to%20v%0D%09%09return%20me%0D%09end%20set_message%0D%09%0D%09on%20update(old_settings)%20--%20optional%0D%09%09set%20my%20_msg%20to%20old_settings%27s%20_msg%0D%09end%20update%0Dend%20script%0D%0Don%20_init()%20%0D%09tell%20XPreferences%0D%09%09set_default_prefs(XPreferencesSampleSettings)%0D%09end%20tell%0Dend%20_init%0D%0Dproperty%20_%20:%20_init()%20--%20set%20up%20defaut%20preferences%20script%20object%20at%20compile%20time%0D%0Don%20run%0D%09set%20prefs%20to%20XPreferences%27s%20load()%0D%09display%20alert%20(prefs%27s%20message())%0D%09prefs%27s%20set_message(%22Hi%22)%0D%09XPreferences%27s%20save_current_prefs()%0Dend%20run" />
 </div><div>
 <span class="langKeyword">use</span> <span class="className">scripting additions</span>
 </div>
@@ -160,7 +162,7 @@ Methods
 </div>
 <br />
 <div>
-<span class="langKeyword">property</span> <span class="userDefine">_</span><span class="normal"> : </span><span class="userDefine">_init</span><span class="normal">()</span>
+<span class="langKeyword">property</span> <span class="userDefine">_</span><span class="normal"> : </span><span class="userDefine">_init</span><span class="normal">() </span><span class="comment">-- set up defaut preferences script object at compile time</span>
 </div>
 <br />
 <div>
@@ -182,7 +184,7 @@ Methods
 <span class="langKeyword">end</span> <span class="commandName">run</span>
 </div>
 </div>
-<h2 id="Updatepreferencescriptobject">Update preference script object</h2>
+<h2 id="Updatepreferencesscriptobject">Update preferences script object</h2>
 <p>To allow to update preference script object (e.g. adding new settings), the preference script object has a "version" property and &quot;update&quot; method.</p>
 <p>If the default preferences script object passed to <a href="pages/set_default_prefs.html">set_default_prefs</a> has &quot;version&quot; property and its value is greather than the value of the &quot;version&quot; property of loaded preferences script object, preferences script object will be updated with following steps.</p>
 <ol>
