@@ -11,9 +11,9 @@
 	<key>CFBundleName</key>
 	<string>XPreferences</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.0.1</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>1.0.1</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright 2018, Tetsuro KURITA</string>
 	<key>WindowState</key>
@@ -31,7 +31,7 @@
 		<key>positionOfDivider</key>
 		<real>479</real>
 		<key>savedFrame</key>
-		<string>121 171 901 706 0 0 1440 877 </string>
+		<string>486 149 901 706 0 0 1440 877 </string>
 		<key>selectedTab</key>
 		<string>result</string>
 	</dict>
